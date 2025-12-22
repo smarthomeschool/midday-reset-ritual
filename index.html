@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Midday Reset Ritual</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #faf7f2;
+      color: #1f2937;
+    }
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+    h1 {
+      font-size: 28px;
+      margin: 0 0 10px 0;
+      line-height: 1.2;
+    }
+    p {
+      margin: 0 0 18px 0;
+      line-height: 1.5;
+      font-size: 16px;
+      color: #374151;
+    }
+    button {
+      border: 0;
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-size: 16px;
+      cursor: pointer;
+      background: #2f6f5e;
+      color: white;
+      font-weight: 600;
+    }
+    button:active { transform: translateY(1px); }
+    .output {
+      margin-top: 22px;
+      padding: 18px;
+      border-radius: 14px;
+      background: #f2faf6;
+      border: 1px solid rgba(47,111,94,0.18);
+      display: none;
+      white-space: pre-line;
+      font-size: 17px;
+      line-height: 1.55;
+      color: #0f172a;
+    }
+    .hint {
+      margin-top: 14px;
+      font-size: 14px;
+      color: #6b7280;
+    }
+    .footer {
+      margin-top: 18px;
+      font-size: 14px;
+      color: #6b7280;
+    }
+    a { color: #2f6f5e; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Midday feeling heavy or scattered?</h1>
+      <p>Click once for a gentle reset and a calm next step.</p>
+
+      <button id="resetBtn">🌿 RESET MY DAY</button>
+
+      <div id="output" class="output"></div>
+
+      <div class="hint">Tip: Bookmark this page for the messy middle of the day.</div>
+
+      <!-- Optional soft CTA (uncomment later if you want)
+      <div class="footer">
+        If this helped, you might like gentle reminders like this when the day feels heavy.
+      </div>
+      -->
+    </div>
+  </div>
+
+  <script>
+    const resets = [
+`This part of the day often feels heavier than the rest.
+You’re not failing — this is normal.
+Choose something calm and let the rest wait.`,
+
+`Midday is a natural slowdown for most homes.
+Nothing has gone wrong here.
+Shift into something simple and steady for now.`,
+
+`This moment isn’t meant for pushing forward.
+You’re allowed to soften the pace.
+Focus on one gentle activity and pause the rest.`,
+
+`Many days wobble right about now.
+That doesn’t mean you’re behind.
+Simplify what’s happening and give yourself space.`,
+
+`This stretch of the day asks for less thinking.
+You’re not failing — you’re responding wisely.
+Choose something quiet and let the pressure drop.`,
+
+`Midday is often about holding things steady.
+You don’t need to fix everything.
+Stay with one calm task and ignore the rest.`,
+
+`Energy naturally dips in the middle of the day.
+This is normal, not a sign of doing it wrong.
+Shift into something light and grounding.`,
+
+`This moment is about maintenance, not progress.
+You’re allowed to pause without guilt.
+Keep things gentle until the day lifts again.`,
+
+`Nothing here needs to be decided right now.
+You’re not failing — this is a common rhythm.
+Let the day breathe and move more slowly.`,
+
+`Midday doesn’t ask for big wins.
+You’re allowed to choose ease instead.
+Focus on calm and let expectations rest.`,
+
+`This part of the day often feels messy.
+That doesn’t mean you are.
+Create a small pocket of calm and stay there.`,
+
+`The middle of the day can feel stretched thin.
+You’re not doing anything wrong.
+Lower the bar and let today be enough.`,
+
+`This moment is asking for less effort, not more.
+You’re allowed to respond gently.
+Choose something steady and pause the push.`,
+
+`Midday is a quiet turning point in many days.
+You’re not failing — this is human.
+Slow the pace and let the rest wait.`,
+
+`This stretch of the day works best with kindness.
+You don’t need to prove anything right now.
+Hold the day softly and move forward gently.`
+    ];
+
+    const btn = document.getElementById('resetBtn');
+    const out = document.getElementById('output');
+
+    function pickRandomReset() {
+      const idx = Math.floor(Math.random() * resets.length);
+      return resets[idx];
+    }
+
+    btn.addEventListener('click', () => {
+      out.style.display = 'block';
+      out.textContent = pickRandomReset();
+      out.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  </script>
+</body>
+</html>
