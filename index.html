@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Midday Reset Ritual</title>
+
   <style>
     body {
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -45,6 +46,7 @@
       font-weight: 600;
     }
     button:active { transform: translateY(1px); }
+
     .output {
       margin-top: 22px;
       padding: 18px;
@@ -62,14 +64,44 @@
       font-size: 14px;
       color: #6b7280;
     }
-    .footer {
+
+    /* OLSP Invite Box */
+    .invite {
+      display: none;
       margin-top: 18px;
+      padding: 16px;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1px solid rgba(47,111,94,0.18);
+    }
+    .invite p {
+      margin: 0 0 10px 0;
+      color: #374151;
+      font-size: 16px;
+    }
+    .invite .tiny {
+      margin-top: 10px;
       font-size: 14px;
       color: #6b7280;
     }
-    a { color: #2f6f5e; }
+    .invite a {
+      text-decoration: none;
+    }
+    .invite .btn2 {
+      width: 100%;
+      margin-top: 6px;
+      background: #2f6f5e;
+      color: #fff;
+      border: 0;
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: 650;
+      cursor: pointer;
+    }
   </style>
 </head>
+
 <body>
   <div class="wrap">
     <div class="card">
@@ -80,13 +112,18 @@
 
       <div id="output" class="output"></div>
 
-      <div class="hint">Tip: Bookmark this page for the messy middle of the day.</div>
+      <!-- OLSP invite (shows after user clicks reset) -->
+      <div id="olspInvite" class="invite">
+        <p>If you’d like gentle reminders like this when the day feels heavy, you can save them here.</p>
 
-      <!-- Optional soft CTA (uncomment later if you want)
-      <div class="footer">
-        If this helped, you might like gentle reminders like this when the day feels heavy.
+        <a href="https://olsp.annelizemeyer.com/midday-reset-tool" target="_blank" rel="noopener">
+          <button class="btn2">Save this calm 🌿</button>
+        </a>
+
+        <div class="tiny">No pressure. Unsubscribe anytime.</div>
       </div>
-      -->
+
+      <div class="hint">Tip: Bookmark this page for the messy middle of the day.</div>
     </div>
   </div>
 
@@ -211,10 +248,11 @@ Choose something calming and familiar.`,
 `You’re allowed to end the day imperfectly.
 Nothing is lost here.
 Hold the rest of the day lightly.`
-];
+    ];
 
     const btn = document.getElementById('resetBtn');
     const out = document.getElementById('output');
+    const invite = document.getElementById('olspInvite');
 
     function pickRandomReset() {
       const idx = Math.floor(Math.random() * resets.length);
@@ -224,14 +262,14 @@ Hold the rest of the day lightly.`
     btn.addEventListener('click', () => {
       out.style.display = 'block';
       out.textContent = pickRandomReset();
+
+      // show OLSP invite only after they’ve received a reset
+      invite.style.display = 'block';
+
+      // gentle scroll so the message is centered-ish
       out.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   </script>
 </body>
 </html>
-<div class="footer">
-  <p>If you’d like gentle reminders like this when the day feels heavy, you can save them here.</p>
-  <a href="https://olsp.annelizemeyer.com/midday-reset-tool" target="_blank">
-    <button style="margin-top:10px;">Save this calm 🌿</button>
-  </a>
-</div>
+
